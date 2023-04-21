@@ -11,6 +11,7 @@ class App
   end
 
   def diplay_menu
+    puts
     puts 'Please choose an option by entering a number:'
     puts '1 - List all books'
     puts '2 - List all people'
@@ -40,12 +41,16 @@ class App
 
   def run
     input_option = 0
+    puts 'Welcome to School Library App!'
+
     while input_option != 7
       diplay_menu
-      puts
       input_option = gets.chomp.strip.to_i
       execute_option(input_option)
     end
+
+    puts 'Thank you for using this app!'
+    puts
   end
 
   def list_books
@@ -64,12 +69,16 @@ class App
     @people.each do |person|
       return person if person.id == id
     end
+    nil
   end
 
   def list_rentals
     print 'ID of person: '
     person_id = gets.chomp.to_i
     person = get_person(person_id)
+
+    return unless person
+
     puts 'Rentals:'
     person.rentals.each do |rental|
       puts "Date: #{rental.date} Book: \"#{rental.book.title}\" by #{rental.book.author}"
@@ -80,22 +89,27 @@ class App
     puts
     print 'Age: '
     age = gets.chomp.strip.to_i
+
     while age < 4 || age > 120
       print 'Enter correct age: '
       age = gets.chomp.strip.to_i
     end
+
     print 'Name: '
     name = gets.chomp.strip.capitalize
     print 'Has parent permission? [Y/N]: '
     permission = gets.chomp.strip.upcase
+
     case permission
     when 'Y' || 'y'
       permission = true
     when 'N' || 'n'
       permission = false
     end
+
     @people << Student.new(age, nil, name, parent_permission: permission)
     puts 'Person created successfully'
+    puts
   end
 
   def create_teacher
