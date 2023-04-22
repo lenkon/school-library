@@ -40,7 +40,7 @@ class App
   end
 
   def run
-    input_option = 0
+    input_option = 7
     puts 'Welcome to School Library App!'
 
     while input_option != 7
