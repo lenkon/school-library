@@ -26,25 +26,13 @@ class App
     when 2
       List.list_people(@people)
     when 3
-      create_person
+      Create.create_person(@people)
     when 4
       Create.create_book(@books)
     when 5
       Create.create_rental(@people, @books)
     when 6
       List.list_rentals(@people)
-    end
-  end
-
-  def create_person
-    puts
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    option = gets.chomp.strip.to_i
-    case option
-    when 1
-      Create.create_student(@people)
-    when 2
-      Create.create_teacher(@people)
     end
   end
 end
