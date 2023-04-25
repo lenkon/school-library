@@ -1,6 +1,4 @@
-require './list'
 require './book'
-require './rental'
 require './student'
 require './teacher'
 require './inputhelper'
@@ -49,7 +47,7 @@ class Create
     puts 'Person created successfully'
   end
 
-  def self.create_book(books)    
+  def self.create_book(books)
     title = InputHelper.title
     author = InputHelper.author
     books << Book.new(title, author)
@@ -57,31 +55,12 @@ class Create
   end
 
   def self.create_rental(people, books)
-    puts
-    puts 'Select a book from the following list by number'
-    List.list_books(books)
-    book_option = gets.chomp.to_i
+    book = InputHelper.get_book(books)
 
-    while book_option.negative? || book_option >= books.length
-      print "Enter a number between 0 - #{books.length - 1}: "
-      book_option = gets.chomp.to_i
-    end
+    person = InputHelper.get_person(people)
 
-    book = books[book_option]
+    date = InputHelper.get_date
 
-    puts
-    puts 'Select a person from the following list by number (not id)'
-    List.list_people(people)
-    person_option = gets.chomp.to_i
-    while person_option.negative? || person_option >= people.length
-      print "Enter a number between 0 - #{people.length - 1}: "
-      person_option = gets.chomp.to_i
-    end
-
-    person = people[person_option]
-    puts
-    print 'Date (YYYY/MM/DD): '
-    date = gets.chomp.strip
     person.add_rental(date, book)
     puts 'Rental created successfully'
   end
