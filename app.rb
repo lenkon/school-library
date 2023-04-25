@@ -1,7 +1,4 @@
 require './create'
-require './book'
-require './student'
-require './teacher'
 
 class App
   def initialize
@@ -31,9 +28,9 @@ class App
     when 3
       create_person
     when 4
-      create_book
+      Create.create_book(@books)
     when 5
-      create_rental
+      Create.create_rental(@people, @books)
     when 6
       List.list_rentals(@people)
     end
@@ -49,46 +46,5 @@ class App
     when 2
       Create.create_teacher(@people)
     end
-  end
-
-  def create_book
-    puts
-    print 'Title: '
-    title = gets.chomp.strip.capitalize
-    print 'Author: '
-    author = gets.chomp.strip.capitalize
-    @books << Book.new(title, author)
-    puts 'Book created successfully'
-  end
-
-  def create_rental
-    puts
-    puts 'Select a book from the following list by number'
-    list_books
-    book_option = gets.chomp.to_i
-
-    while book_option.negative? || book_option >= @books.length
-      print "Enter a number between 0 - #{@books.length - 1}: "
-      book_option = gets.chomp.to_i
-    end
-    book = @books[book_option]
-
-    puts
-    puts 'Select a person from the following list by number (not id)'
-    list_people
-    person_option = gets.chomp.to_i
-
-    while person_option.negative? || person_option >= @people.length
-      print "Enter a number between 0 - #{@people.length - 1}: "
-      person_option = gets.chomp.to_i
-    end
-
-    person = @people[person_option]
-
-    puts
-    print 'Date (YYYY/MM/DD): '
-    date = gets.chomp.strip
-    person.add_rental(date, book)
-    puts 'Rental created successfully'
   end
 end

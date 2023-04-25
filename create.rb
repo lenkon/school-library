@@ -47,4 +47,43 @@ class Create
     people << Teacher.new(age, specialization, name)
     puts 'Person created successfully'
   end
+
+  def self.create_book(books)
+    puts
+    print 'Title: '
+    title = gets.chomp.strip.capitalize
+    print 'Author: '
+    author = gets.chomp.strip.capitalize
+    books << Book.new(title, author)
+    puts 'Book created successfully'
+  end
+
+  def self.create_rental(people, books)
+    puts
+    puts 'Select a book from the following list by number'
+    List.list_books(books)
+    book_option = gets.chomp.to_i
+
+    while book_option.negative? || book_option >= books.length
+      print "Enter a number between 0 - #{books.length - 1}: "
+      book_option = gets.chomp.to_i
+    end
+
+    book = books[book_option]
+
+    puts
+    puts 'Select a person from the following list by number (not id)'
+    List.list_people(people)
+    person_option = gets.chomp.to_i
+    while person_option.negative? || person_option >= people.length
+      print "Enter a number between 0 - #{people.length - 1}: "
+      person_option = gets.chomp.to_i
+    end
+
+    puts
+    print 'Date (YYYY/MM/DD): '
+    date = gets.chomp.strip
+    person.add_rental(date, book)
+    puts 'Rental created successfully'
+  end
 end
