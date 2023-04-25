@@ -1,5 +1,5 @@
+require './create'
 require './book'
-require './rental'
 require './student'
 require './teacher'
 
@@ -25,9 +25,9 @@ class App
   def execute_option(option)
     case option
     when 1
-      list_books
+      List.list_books(@books)
     when 2
-      list_people
+      List.list_people(@people)
     when 3
       create_person
     when 4
@@ -35,51 +35,8 @@ class App
     when 5
       create_rental
     when 6
-      list_rentals
+      List.list_rentals(@people)
     end
-  end
-
-  def create_student
-    puts
-    print 'Age: '
-    age = gets.chomp.strip.to_i
-
-    while age < 4 || age > 120
-      print 'Enter correct age: '
-      age = gets.chomp.strip.to_i
-    end
-
-    print 'Name: '
-    name = gets.chomp.strip.capitalize
-    print 'Has parent permission? [Y/N]: '
-    permission = gets.chomp.strip.upcase
-
-    case permission
-    when 'Y' || 'y'
-      permission = true
-    when 'N' || 'n'
-      permission = false
-    end
-
-    @people << Student.new(age, nil, name, parent_permission: permission)
-    puts 'Person created successfully'
-    puts
-  end
-
-  def create_teacher
-    puts
-    print 'Age: '
-    age = gets.chomp.strip.to_i
-    while age < 18 || age > 120
-      print 'Enter correct age: '
-      age = gets.chomp.strip.to_i
-    end
-    print 'Name: '
-    name = gets.chomp.strip.capitalize
-    print 'Specialization: '
-    specialization = gets.chomp.strip
-    @people << Teacher.new(age, specialization, name)
-    puts 'Person created successfully'
   end
 
   def create_person
@@ -88,9 +45,9 @@ class App
     option = gets.chomp.strip.to_i
     case option
     when 1
-      create_student
+      Create.create_student(@people)
     when 2
-      create_teacher
+      Create.create_teacher(@people)
     end
   end
 
