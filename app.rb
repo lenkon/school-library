@@ -39,38 +39,6 @@ class App
     end
   end
 
-  def list_books
-    @books.each_with_index do |book, index|
-      puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
-    end
-  end
-
-  def list_people
-    @people.each_with_index do |person, index|
-      puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id} Age: #{person.age}"
-    end
-  end
-
-  def get_person(id)
-    @people.each do |person|
-      return person if person.id == id
-    end
-    nil
-  end
-
-  def list_rentals
-    print 'ID of person: '
-    person_id = gets.chomp.to_i
-    person = get_person(person_id)
-
-    return unless person
-
-    puts 'Rentals:'
-    person.rentals.each do |rental|
-      puts "Date: #{rental.date} Book: \"#{rental.book.title}\" by #{rental.book.author}"
-    end
-  end
-
   def create_student
     puts
     print 'Age: '
