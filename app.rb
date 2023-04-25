@@ -39,20 +39,6 @@ class App
     end
   end
 
-  def run
-    input_option = 0
-    puts 'Welcome to School Library App!'
-
-    while input_option != 7
-      diplay_menu
-      input_option = gets.chomp.strip.to_i
-      execute_option(input_option)
-    end
-
-    puts 'Thank you for using this app!'
-    puts
-  end
-
   def list_books
     @books.each_with_index do |book, index|
       puts "#{index}) Title: \"#{book.title}\", Author: #{book.author}"
