@@ -3,6 +3,7 @@ require './book'
 require './rental'
 require './student'
 require './teacher'
+require './inputhelper'
 
 class Create
   def self.create_student(people)
@@ -48,12 +49,9 @@ class Create
     puts 'Person created successfully'
   end
 
-  def self.create_book(books)
-    puts
-    print 'Title: '
-    title = gets.chomp.strip.capitalize
-    print 'Author: '
-    author = gets.chomp.strip.capitalize
+  def self.create_book(books)    
+    title = InputHelper.title
+    author = InputHelper.author
     books << Book.new(title, author)
     puts 'Book created successfully'
   end
