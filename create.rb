@@ -80,6 +80,7 @@ class Create
       person_option = gets.chomp.to_i
     end
 
+    person = people[person_option]
     puts
     print 'Date (YYYY/MM/DD): '
     date = gets.chomp.strip
