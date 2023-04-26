@@ -6,7 +6,7 @@ class App
   def initialize
     @books = ReadFile.load_books
     @people = ReadFile.load_people
-    @rentals = []
+    @rentals = ReadFile.load_rentals(@books, @people)
   end
 
   def diplay_menu

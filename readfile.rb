@@ -36,4 +36,18 @@ class ReadFile
     end
     people
   end
+
+  def self.load_rentals(books, people)
+    rentals = []
+    create_directory
+    File.write('./store/rentals.json', []) unless File.exist?('./store/rentals.json')
+    records = JSON.parse(File.read('./store/rentals.json'))
+    records.each do |record|
+      book = books.select { |el| el.title == record['title'] }[0]
+      person = people.select { |el| el.id == record['id'] }[0]
+      rental = person.add_rental(record['date'], book)
+      rentals << rental
+    end
+    rentals
+  end
 end
