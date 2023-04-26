@@ -46,6 +46,8 @@
 - **[Create class]**
 - **[Decorator design pattern]**
 - **[Console menu]**
+- **[Save data in file]**
+- **[Load data from file]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
