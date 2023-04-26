@@ -5,8 +5,8 @@ require './storage'
 class App
   def initialize
     @books = ReadFile.load_books
-    @people = ReadFile.load_people
-    @rentals = ReadFile.load_rentals(@books, @people)
+    @people = []
+    @rentals = []
   end
 
   def diplay_menu
