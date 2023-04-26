@@ -35,7 +35,7 @@ class App
       Create.create_rental(@people, @books, @rentals)
     when 6
       List.list_rentals(@people)
-    when 7
+    else
       Storage.save_all(@people, @books, @rentals)
     end
   end
