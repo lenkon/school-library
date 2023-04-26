@@ -7,7 +7,7 @@ class Storage
     FileUtils.mkdir_p('./store')
   end
 
-  def self.save_all(people, books, rentals)
+  def self.save_all(people, books, _rentals)
     create_directory
     save_people(people)
     save_books(books)

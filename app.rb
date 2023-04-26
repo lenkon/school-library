@@ -5,7 +5,7 @@ require './storage'
 class App
   def initialize
     @books = ReadFile.load_books
-    @people = []
+    @people = ReadFile.load_people
     @rentals = []
   end
 
