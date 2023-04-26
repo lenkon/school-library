@@ -46,14 +46,14 @@ class Create
     puts 'Book created successfully'
   end
 
-  def self.create_rental(people, books)
+  def self.create_rental(people, books, rentals)
     book = InputHelper.fetch_book(books)
 
     person = InputHelper.fetch_person(people)
 
     date = InputHelper.fetch_date
 
-    person.add_rental(date, book)
+    rentals << person.add_rental(date, book)
     puts 'Rental created successfully'
   end
 end

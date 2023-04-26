@@ -1,10 +1,12 @@
 require './create'
+require './readfile'
+require './storage'
 
 class App
   def initialize
-    @books = []
-    @rentals = []
-    @people = []
+    @books = ReadFile.load_books
+    @people = ReadFile.load_people
+    @rentals = ReadFile.load_rentals(@books, @people)
   end
 
   def diplay_menu
@@ -30,9 +32,11 @@ class App
     when 4
       Create.create_book(@books)
     when 5
-      Create.create_rental(@people, @books)
+      Create.create_rental(@people, @books, @rentals)
     when 6
       List.list_rentals(@people)
+    when 7
+      Storage.save_all(@people, @books, @rentals)
     end
   end
 end

@@ -10,6 +10,7 @@ def run
     input_option = gets.chomp.strip.to_i
     app.execute_option(input_option)
   end
+  app.execute_option(input_option)
 
   puts 'Thank you for using this app!'
   puts

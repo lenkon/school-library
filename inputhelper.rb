@@ -21,6 +21,7 @@ class InputHelper
       print 'Enter correct age: '
       age = gets.chomp.strip.to_i
     end
+    age
   end
 
   def self.fetch_permission
@@ -29,10 +30,11 @@ class InputHelper
 
     case permission
     when 'Y' || 'y'
-      true
+      permission = true
     when 'N' || 'n'
-      false
+      permission = false
     end
+    permission
   end
 
   def self.fetch_teacher_age
@@ -44,6 +46,7 @@ class InputHelper
       print 'Enter correct age: '
       age = gets.chomp.strip.to_i
     end
+    age
   end
 
   def self.fetch_specialization
