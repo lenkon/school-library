@@ -48,6 +48,7 @@
 - **[Console menu]**
 - **[Save data in file]**
 - **[Load data from file]**
+- **[Unit test]**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
