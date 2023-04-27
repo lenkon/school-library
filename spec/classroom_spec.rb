@@ -9,7 +9,7 @@ describe Classroom do
   context 'classroom test' do
     it 'classroom label should be "Classroom 1"' do
       expect(@classroom.students.length).to eq(0)
-      expect(@classroom.label).to eq 'Classroom 1'      
+      expect(@classroom.label).to eq 'Classroom 1'
     end
   end
 
